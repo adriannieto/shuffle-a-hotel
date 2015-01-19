@@ -11,6 +11,9 @@ html, body {
 	background: -ms-linear-gradient(top,  #005700 17%,#008a00 78%); /* IE10+ */
 	background: linear-gradient(to bottom,  #005700 17%,#008a00 78%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005700', endColorstr='#008a00',GradientType=0 ); /* IE6-9 */
+	margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .backImg {
@@ -20,6 +23,8 @@ html, body {
 
 .wrapper {
 	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 #beginDiv {
