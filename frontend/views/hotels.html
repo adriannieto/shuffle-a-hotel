@@ -1,12 +1,13 @@
 <div id="baraja1" class="barajabox">
 	<div id="nav-prev"><span>&lt;</span></div>
 	<ul id="baraja-el" class="baraja-container">
-		<li ng-repeat="hotel in hotelCtrl.hotels">
-	        <img ng-src="{{hotel.path}}" alt="image1"/>
+		<li ng-repeat="hotel in hotels">
+	        <img ng-show="hotel.img" ng-src="{{hotel.path}}" alt="image1"/>
+	        <img ng-show="!hotel.img" src="assets/img/hotel.jpg" alt="image1"/>
 	        <h4>{{hotel.name}}</h4>
-	        <p>{{hotel.price}}</p>
-	        <p>{{hotel.stars}} estrellas</p>
-	        <a href="http://{{hotel.web}}">{{hotel.web}}</a>
+	        <p>{{hotel.price}}€/noche</p>
+	        <p><span ng-repeat="i in [1,2,3,4,5]"><i  ng-class="{'mdi-action-grade' : true, 'mdi-material-lightyellow' : i <=hotel.rating }"></i></span></p>
+	        <a href="http://{{hotel.url}}">{{hotel.url}}</a>
 	        <div class="hoteldescription">
 	        	{{hotel.description}}
 	        	<div style="width: 100%; text-align: center;margin-top: 10px;">

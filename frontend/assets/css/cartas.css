@@ -1,6 +1,5 @@
 .barajabox {
 	position: relative;
-	color: #aaa;
 	display: none;
 }
 
@@ -52,6 +51,14 @@
 
 #nextBaraja {
 	display: none;
+}
+
+.mdi-action-grade {
+	color: gray;
+}
+
+.mdi-material-lightyellow {
+	color: rgb(207, 207, 17)
 }
 
 /* Estilo para cartas de tamaño normal */
@@ -127,7 +134,8 @@ ul.baraja-big-container li h4 {
 }
 
 .hoteldescription {
-	padding: 8px;
+	padding: 0 10px;
+	margin: 10px 3px 0;
 	color: black;
 	font-weight: normal;
 	font-size: 12px;

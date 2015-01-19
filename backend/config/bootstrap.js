@@ -12,14 +12,14 @@
 module.exports.bootstrap = function(cb) {
 
 
-  Hotel.create([{name:'Playa de la Luz', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'Malaga Palacio', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'NH Málaga', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'Hotel Palma Palmilla', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'Asperones Resort', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'4 de Diciembre Gran Lujo', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'AC Hoteles La Corta', description: 'Awesome hotel', url:'awesomehotel.com'},
-				{name:'El Banco de la Esquina', description: 'Awesome hotel', url:'awesomehotel.com'}]
+  Hotel.create([{name:'Playa de la Luz', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'Malaga Palacio', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'NH Málaga', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'Hotel Palma Palmilla', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'Asperones Resort', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'4 de Diciembre Gran Lujo', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'AC Hoteles La Corta', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+				{name:'El Banco de la Esquina', description: 'Awesome hotel', url:'awesomehotel.com', price: 120}]
 			).exec(function (err, hotel){
 				if(err)
 					console.log(err);

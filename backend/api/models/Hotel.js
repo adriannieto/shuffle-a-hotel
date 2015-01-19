@@ -25,10 +25,16 @@ module.exports = {
 		required: true
 	  },
 	  rating: {
-		type: 'integer',
-		defaultTo: 1,
+		type: 'integer',		
+		defaultsTo: 1,
 		min: 1,
 		max: 5,
+		required: true
+	  },
+	  price: {
+	  	type: 'float',
+	  	min: 1,
+	  	required: true
 	  },
 	  url:{
 		type: 'string',
