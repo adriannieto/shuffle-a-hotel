@@ -5,6 +5,7 @@
 */
 
 module.exports = {
+  schema: true,
 	
   types: {
   	is_geopoint: function(point){

@@ -5,7 +5,7 @@
 */
 
 module.exports = {
-
+    schema: true,
 	attributes: {
 		name: {
 			type: 'string',
@@ -55,14 +55,13 @@ module.exports = {
 	beforeCreate: function (values, cb) {
 
 		// Encrypt password
-		// bcrypt.compare(req.param('password'), user.password, function(err, match) {
-			var bcrypt = require('bcrypt');
-			bcrypt.hash(values.password, 10, function(err, hash) {
-				if(err) return cb(err);
-				values.password = hash;
+		// bcrypt.compare(req.param('password'), user.password, function(err, match)...
+		var bcrypt = require('bcrypt');
+		bcrypt.hash(values.password, 10, function(err, hash) {
+			if(err) return cb(err);
+			values.password = hash;
 
-				cb();
-			});
-		}
-	};
-
+			cb();
+		});
+	}
+}
