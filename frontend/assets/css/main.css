@@ -1,0 +1,36 @@
+.navbar-center
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.titulo
+{
+	font-size: 30px !important;
+}
+
+.btn-white
+{
+	background-color: white;
+}
+
+#avatar
+{
+	height: 60px;
+	margin-bottom: 0px;
+
+}
+
+#imgavatar
+{
+	padding-top: 2px;
+	padding-right: 2px;
+}
+
+#username
+{
+	margin-top: 20px;
+}

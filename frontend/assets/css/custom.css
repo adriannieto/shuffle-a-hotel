@@ -1,0 +1,43 @@
+html, body {
+	height: 100%;
+}
+
+.tapete {
+	background: #005700; /* Old browsers */
+	background: -moz-linear-gradient(top,  #005700 17%, #008a00 78%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,#005700), color-stop(78%,#008a00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #005700 17%,#008a00 78%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #005700 17%,#008a00 78%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #005700 17%,#008a00 78%); /* IE10+ */
+	background: linear-gradient(to bottom,  #005700 17%,#008a00 78%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005700', endColorstr='#008a00',GradientType=0 ); /* IE6-9 */
+}
+
+.backImg {
+	background-image: url('../img/back.jpg');
+	background-size: 100%;
+}
+
+.wrapper {
+	text-align: center;
+}
+
+#beginDiv {
+	opacity: 1.0;
+	padding-top: 100px;
+	transition: opacity 0.75s linear;
+}
+
+#beginTitle {
+	font-size: 40px;
+	padding-bottom: 30px;
+	color: white;
+}
+
+#beginTitle h1 {
+	font-family: Lobster, Courier;
+}
+
+#beginButton {
+	font-size: 30px;
+}

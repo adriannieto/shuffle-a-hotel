@@ -1,0 +1,19 @@
+<div id="baraja1" class="barajabox">
+	<div id="nav-prev"><span>&lt;</span></div>
+	<ul id="baraja-el" class="baraja-container">
+		<li ng-repeat="hotel in hotelCtrl.hotels">
+	        <img ng-src="{{hotel.path}}" alt="image1"/>
+	        <h4>{{hotel.name}}</h4>
+	        <p>{{hotel.price}}</p>
+	        <p>{{hotel.stars}} estrellas</p>
+	        <a href="http://{{hotel.web}}">{{hotel.web}}</a>
+	        <div class="hoteldescription">
+	        	{{hotel.description}}
+	        	<div style="width: 100%; text-align: center;margin-top: 10px;">
+	        		<a href="javascript:void(0)" class="btn btn-info btn-raised">Reservar</a>
+	        	</div>
+	        </div>
+	    </li>
+	</ul>
+	<div id="nav-next"><span>&gt;</span></div>
+</div>
