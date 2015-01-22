@@ -46,3 +46,14 @@ html, body {
 #beginButton {
 	font-size: 30px;
 }
+
+#mapview {
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+#map {
+	height: 100% !important;
+	width: 100% !important;
+}

@@ -5,7 +5,7 @@ function hotelscontroller($scope,$http){
 	    method: "GET"
 	}).success(function(data, status, headers, config) {
 	    $scope.hotels = data;
-	    console.log(this.hotels);
+	    console.log("hotel data received: " + data);
 	}).error(function(data, status, headers, config) {
 	    alert("AJAX failed!");
 	});

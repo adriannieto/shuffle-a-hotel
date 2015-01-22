@@ -54,5 +54,9 @@
 }
 
 .navbar-default {
-	z-index: 2;"
+	z-index: 3000;
+}
+
+.navbar {
+	margin-bottom: 0px;
 }

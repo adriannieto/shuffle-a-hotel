@@ -12,9 +12,9 @@
 module.exports.bootstrap = function(cb) {
 
 
-  Hotel.create([{name:'Playa de la Luz', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
-				{name:'Malaga Palacio', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
-				{name:'NH Málaga', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
+  Hotel.create([{name:'Playa de la Luz', description: 'Awesome hotel', url:'awesomehotel.com', price: 120, location: {latitude: 36.723380, longitude: -4.414341}},
+				{name:'Malaga Palacio', description: 'Awesome hotel', url:'awesomehotel.com', price: 120, location: {latitude: 41.407381, longitude: 2.165970}},
+				{name:'NH Málaga', description: 'Awesome hotel', url:'awesomehotel.com', price: 120, location: {latitude: 43.274880, longitude: -7.985397}},
 				{name:'Hotel Palma Palmilla', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
 				{name:'Asperones Resort', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},
 				{name:'4 de Diciembre Gran Lujo', description: 'Awesome hotel', url:'awesomehotel.com', price: 120},

@@ -31,6 +31,16 @@ $('#beginButton').on('click',function(){
     },750);
 });
 
+$('#maptoggle').click(function(){
+    if($("#maptoggle").is(':checked')) {  
+        $('#cardsview').hide();
+        $('#mapview').show();
+    } else {
+        $('#mapview').hide();
+        $('#cardsview').show();
+    }
+});
+
 function fanBaraja(){
     baraja.fan( {
         speed : 500,
