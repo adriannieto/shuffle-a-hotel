@@ -1,7 +1,7 @@
 function mapcontroller($scope,$http){
 	$scope.hotels={};
 	$http({
-	    url: "http://localhost:1337/api/hotels",
+	    url: "api/hotels",
 	    method: "GET"
 	}).success(function(data, status, headers, config) {
 	    $scope.hotels = data;
