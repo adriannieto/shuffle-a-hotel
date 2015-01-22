@@ -1,0 +1,58 @@
+.box-register{
+
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.buttons-register{
+	float: right;
+}
+
+.header-logo-default{
+	font-size: 28px;
+}
+
+.registro-inputs{
+	text-align: left !important;
+}
+
+.radioRegistro{
+
+	padding-left: 220px;
+}
+
+#tooglenav{
+	padding-top: 18px;
+}
+
+#homepage
+{
+    font-size: 20px;
+}
+
+.btn-white
+{
+	background-color: white;
+}
+
+#avatar
+{
+	height: 60px;
+	margin-bottom: 0px;
+
+}
+
+#imgavatar
+{
+	padding-top: 2px;
+	padding-right: 2px;
+}
+
+#username
+{
+	margin-top: 20px;
+}
+
+.navbar-default {
+	z-index: 2;"
+}

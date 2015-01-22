@@ -1,0 +1,5 @@
+var offers = [];
+
+function registercontroller(){
+}
+

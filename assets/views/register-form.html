@@ -1,0 +1,63 @@
+<div class="jumbotron box-register">
+	<h1>Registro</h1>          
+	<form class="form-horizontal">
+		<fieldset>
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs">Registrarse como: *</label>
+				<div class="radioRegistro">
+					<div class="radio radio-primary">
+						<label>
+							<input type="radio" ng-model="user.type" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+							Usuario
+						</label>
+						<label>
+							<input type="radio" ng-model="user.type" name="optionsRadios" id="optionsRadios2" value="option2">
+							Empresa
+						</label>
+					</div>
+				</div>
+			</div>   
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs" required>Empresa *</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="inputName" ng-model="user.company" placeholder="Nombre de la Empresa">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs">País</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="inputCountry" ng-model="user.country" placeholder="País">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputFile" class="col-lg-3 control-label registro-inputs">Avatar</label>
+				<div class="col-lg-9">
+					<input type="text"  readonly="" class="form-control floating-label" placeholder="Buscar...">
+					<input type="file" ng-model="user.avatar" id="inputFile" multiple="">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs" required>Usuario *</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="inputUsername" ng-model="user.name" placeholder="Nombre de Usuario">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" required>Contraseña *</label>
+				<div class="col-lg-9">
+					<input type="password" class="form-control" id="inputPassword" ng-model="user.password" placeholder="Contraseña">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" required>Confirmar *</label>
+				<div class="col-lg-9">
+					<input type="password" class="form-control" id="inputCheckPassword" placeholder="Introduzca de nuevo su contraseña">
+				</div>
+			</div>
+			<div class="buttons-register"> 
+				<button type="button" class="btn btn-default">Cancelar</button>
+				<button type="button" class="btn btn-primary" ng-click="add(user)">Confirmar</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
