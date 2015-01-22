@@ -1,5 +1,0 @@
-var offers = [];
-
-function registercontroller(){
-}
-
