@@ -7,15 +7,31 @@
 module.exports = {
 	
 	getUser: function(req, res){
-	    return res.json({
-	      todo: 'Not implemented yet!'
-	    });
+		User.findOne({id : req.params.id}).populateAll().exec(function(err, user){
+            if (err){
+				res.json({error: 'Unexpected error'}, 500);
+            }
+			
+			if (!hotel){
+				res.json({error: 'Invalid user ID'});
+			}
+			
+			return res.send(user);			 
+		});
 	},
 	
 	addUser: function(req, res){
-	    return res.json({
-	      todo: 'Not implemented yet!'
-	    });
+		if(!req.body.user){
+			res.json({error: 'Invalid User'});
+		}
+				
+		User.create(req.body.user).exec(function(err, user){
+            if (err){
+				res.json({error: 'Cannot create the User'}, 500);
+            }
+			
+			return res.send(user);			 
+		})
 	},
 	
 	updateUser: function(req, res){
@@ -25,9 +41,17 @@ module.exports = {
 	},
 	
 	removeUser: function(req, res){
-	    return res.json({
-	      todo: 'Not implemented yet!'
-	    });
+		User.destroy({id : req.params.id}).populateAll().exec(function(err, user){
+            if (err){
+				res.json({error: 'Unexpected error'}, 500);
+            }
+			
+			if (!hotel){
+				res.json({error: 'Invalid user ID'});
+			}
+			
+			return res.send(user);			 
+		});
 	},
 	
 	

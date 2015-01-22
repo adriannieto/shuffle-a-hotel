@@ -22,7 +22,7 @@ module.exports = {
 	},
 	
 	getHotel: function(req, res){
-		Hotel.findOne({id : req.params.id}).populateAll().exec(function(err, hotel){
+		Hotel.findOne({id : req.params.id}).exec(function(err, hotel){
             if (err){
 				res.json({error: 'Unexpected error'}, 500);
             }
@@ -57,7 +57,7 @@ module.exports = {
 	},
 	
 	removeHotel: function(req, res){
-		Hotel.destroy({id : req.params.id}).exec(function(err, hotel){
+		Hotel..destroy({id : req.params.id}).exec(function(err, hotel){
             if (err){
 				res.json({error: 'Unexpected error'}, 500);
             }

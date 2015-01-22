@@ -49,7 +49,10 @@ module.exports = {
 	  //TODO: Define an array of pictures
 	  picture:{
 		type: 'binary',
-	  }
+	  },
+      owner:{
+          model:'Business'
+      }
   }
 };
 
