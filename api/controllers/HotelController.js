@@ -36,11 +36,11 @@ module.exports = {
 	},
 	
 	addHotel: function(req, res){	  
-		if(!req.body.hotel){
+		if(!req.body){
 			res.json({error: 'Invalid hotel ID'});
 		}
 				
-		Hotel.create(req.body.hotel).exec(function(err, hotel){
+		Hotel.create(req.body).exec(function(err, hotel){
             if (err){
 				res.json({error: 'Cannot create the Hotel'}, 500);
             }

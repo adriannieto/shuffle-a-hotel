@@ -21,11 +21,11 @@ module.exports = {
 	},
 	
 	addBusiness: function(req, res){	  
-		if(!req.body.business){
+		if(!req.body){
 			res.json({error: 'Invalid Business ID'});
 		}
 				
-		Business.create(req.body.business).exec(function(err, business){
+		Business.create(req.body).exec(function(err, business){
             if (err){
 				res.json({error: 'Cannot create the Business'}, 500);
             }

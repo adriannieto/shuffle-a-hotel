@@ -21,11 +21,11 @@ module.exports = {
 	},
 	
 	addUser: function(req, res){
-		if(!req.body.user){
+		if(!req.body){
 			res.json({error: 'Invalid User'});
 		}
 				
-		User.create(req.body.user).exec(function(err, user){
+		User.create(req.body).exec(function(err, user){
             if (err){
 				res.json({error: 'Cannot create the User'}, 500);
             }
