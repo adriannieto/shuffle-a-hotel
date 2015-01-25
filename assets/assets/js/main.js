@@ -1,5 +1,5 @@
 var baraja;
-var cardStatus = "open";
+var cardStatus;
 
 $('#beginButton').on('click',function(){
     $('#beginDiv').css('opacity','0');
@@ -8,38 +8,40 @@ $('#beginButton').on('click',function(){
         $("body").removeClass("backImg").addClass("tapete");
         $('#baraja1').show();
         setTimeout(function(){
-            baraja = $('#baraja-el').baraja();
-            fanBaraja();
-            $('#toggleBaraja').css('display','inline-block');
-            $('#toggleBaraja').on('click',toggleBaraja);
-            $('#nextBaraja').css('display','inline-block');
-            $('#baraja1').on('click',function(){
-                $('ul.baraja-container').removeClass("baraja-container").addClass("baraja-big-container");
-                $('.hoteldescription').show();
-                $('#nav-prev').css('display','inline-block');
-                $('#nav-next').css('display','inline-block');
-                $('#toggleBaraja').html("Abrir baraja");
-                cardStatus="closed";
-            });
-            $('#nav-prev').on('click', function(event) {
-                baraja.previous();
-            });
-            $('#nav-next').on('click', function(event) {
-                baraja.next();
-            });
+            setBaraja();
         },1000);
     },750);
 });
 
-$('#maptoggle').click(function(){
-    if($("#maptoggle").is(':checked')) {  
-        $('#cardsview').hide();
-        $('#mapview').show();
-    } else {
-        $('#mapview').hide();
-        $('#cardsview').show();
+function setBaraja(){
+    if(baraja && cardStatus=="closed"){
+        toggleBaraja();
     }
-});
+    baraja = $('#baraja-el').baraja();
+    fanBaraja();
+    cardStatus = "open";
+    $('#toggleBaraja').css('display','inline-block');
+    $('#toggleBaraja').off();
+    $('#toggleBaraja').on('click',toggleBaraja);
+    $('#nextBaraja').css('display','inline-block');
+    $('#baraja1').off();
+    $('#baraja1').on('click',function(){
+        $('ul.baraja-container').removeClass("baraja-container").addClass("baraja-big-container");
+        $('.hoteldescription').show();
+        $('#nav-prev').css('display','inline-block');
+        $('#nav-next').css('display','inline-block');
+        $('#toggleBaraja').html("Abrir baraja");
+        cardStatus="closed";
+    });
+    $('#nav-prev').off();
+    $('#nav-prev').on('click', function(event) {
+        baraja.previous();
+    });
+    $('#nav-next').off();
+    $('#nav-next').on('click', function(event) {
+        baraja.next();
+    });
+}
 
 function fanBaraja(){
     baraja.fan( {
@@ -71,3 +73,13 @@ function toggleBaraja(){
         cardStatus="closed";
     }
 }
+
+$('#maptoggle').click(function(){
+    if($("#maptoggle").is(':checked')) {  
+        $('#cardsview').hide();
+        $('#mapview').show();
+    } else {
+        $('#mapview').hide();
+        $('#cardsview').show();
+    }
+});

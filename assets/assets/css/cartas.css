@@ -53,6 +53,10 @@
 	display: none;
 }
 
+#previousBaraja {
+	display: none;
+}
+
 .mdi-action-grade {
 	color: gray;
 }

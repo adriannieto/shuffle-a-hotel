@@ -9,8 +9,8 @@ module.exports = {
 	listHotels: function(req, res){
 		// TODO: Add filter criteras
 		
-		var limitParam = (!req.query.limit)? 5 : req.query.limit;
-		var pageParam = (!req.query.page)? 0 : req.query.page;
+		var limitParam = (!req.params.limit)? 5 : req.params.limit;
+		var pageParam = (!req.params.page)? 0 : req.params.page;
 		
 		Hotel.find().paginate({limit : limitParam, page :pageParam}).exec(function(err, hotels){
             if (err){

@@ -11,7 +11,6 @@ function mapcontroller($scope,$http){
 	    	center: new google.maps.LatLng(40.402699, -3.700729)
 	    };
 	    map = new google.maps.Map(document.getElementById('map'),mapOptions);
-	    console.log("Hola");
 	    var image = 'assets/img/hotelIcon.png';
 	    var contentString;
 	    var infowindows = [];
@@ -46,14 +45,17 @@ function mapcontroller($scope,$http){
 }
 
 function createContentString(hotel){
-	contentString = '<div class="col-md-6"><h1 style="margin-top: 0px;">'+hotel.name+'</h1>';
-	if(hotel.img){
-		contentString += '<div style="width: 50%;"><img src="'+hotel.img+'" style="width: 100%"></div></div>';
-	}else{
-		contentString += '<div style="display: inline-block;"><img src="assets/img/hotel.jpg" style="width: 50%"></div></div>';
-	}
-	contentString += '<div class="col-md-6" style="padding-top: 5px;"><p><b>Estrellas: '+hotel.rating+' - ';
-	contentString += hotel.price+'€/noche </b></p>';
-	contentString += '<p>'+hotel.description+'</p></div>';
+	imgString = (hotel.img) ? hotel.img : 'assets/img/hotel.jpg';
+	contentString ='<div class="panel panel-success">' +
+	    '<div class="panel-heading">' +
+	        '<h1 style="font-size: 24px;" class="panel-title">'+hotel.name+'</h1>' +
+	    '</div>' +
+	    '<div class="panel-body">'+
+	        '<div class="col-md-6">' +
+	        '<div style="width: 50%;"><img src="'+imgString+'" style="width: 100%"></div></div>' +
+	        '<div class="col-md-6" style="padding-top: 5px;"><p><b>Estrellas: '+hotel.rating+' - '+hotel.price+'€/noche </b></p>'+
+	        '<p>'+hotel.description+'</p></div>'+
+	    '</div>'+
+	'</div>';
 	return contentString;
 }

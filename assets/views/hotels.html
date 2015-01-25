@@ -1,6 +1,6 @@
 <div id="baraja1" class="barajabox">
 	<div id="nav-prev"><span>&lt;</span></div>
-	<ul id="baraja-el" class="baraja-container">
+	<ul id="baraja-el" class="baraja-container" ng-show="hotels.length">
 		<li ng-repeat="hotel in hotels">
 	        <img ng-show="hotel.img" ng-src="{{hotel.path}}" alt="image1"/>
 	        <img ng-show="!hotel.img" src="assets/img/hotel.jpg" alt="image1"/>
@@ -16,9 +16,14 @@
 	        </div>
 	    </li>
 	</ul>
+	<div class="jumbotron" ng-show="hotels.length == 0">
+	    <h1>Ups!</h1>
+	    <p>No hay hoteles que mostrar en la mesa con las características seleccionadas</p>
+	</div>
 	<div id="nav-next"><span>&gt;</span></div>
 </div>
-<div id="buttonPanel">
+<div id="buttonPanel" ng-show="hotels.length">
     <div id="toggleBaraja" class="ctrlbutton">Cerrar baraja</div>
-    <div id="nextBaraja" class="ctrlbutton">Siguiente baraja</div>
+    <div id="previousBaraja" ng-click="hotelCtrl.previousBaraja()" class="ctrlbutton">Baraja anterior</div>
+    <div id="nextBaraja" ng-click="hotelCtrl.nextBaraja()" class="ctrlbutton">Siguiente baraja</div>
 </div>
