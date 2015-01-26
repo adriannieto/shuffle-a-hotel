@@ -10,5 +10,3 @@ deploy:
   domain: scenic
   on:
     repo: adriannieto/shuffle-a-hotel
-env:
-- 'NODE_ENV'="production"
