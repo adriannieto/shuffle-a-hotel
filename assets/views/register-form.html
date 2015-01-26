@@ -1,17 +1,17 @@
 <div class="jumbotron box-register">
 	<h1>Registro</h1>          
-	<form class="form-horizontal">
+	<form name="registrationForm" id="registrationForm" class="form-horizontal css-form"  ng-submit="registrationForm.$valid && createNewUser()" novalidate>
 		<fieldset> 
 			<div class="form-group">
-				<label class="col-lg-3 control-label registro-inputs" required>Nombre *</label>
+				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
 				<div class="col-lg-9">
-					<input class="form-control" id="inputName" ng-model="user.name" placeholder="Nombre">
+					<input class="form-control" id="inputName" ng-model="user.name" placeholder="Nombre" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-3 control-label registro-inputs" required>Apellidos *</label>
+				<label class="col-lg-3 control-label registro-inputs">Apellidos *</label>
 				<div class="col-lg-9">
-					<input class="form-control" id="inputName" ng-model="user.lastName" placeholder="Apellidos">
+					<input class="form-control" id="inputLastName" ng-model="user.lastName" placeholder="Apellidos" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -21,45 +21,44 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-3 control-label registro-inputs">Edad</label>
+				<label class="col-lg-3 control-label registro-inputs" >Edad</label>
 				<div class="col-lg-9">
-					<input class="form-control" id="inputCountry" ng-model="user.age" placeholder="Edad">
+					<input class="form-control" id="inputAge" ng-model="user.age" type="number" placeholder="Edad">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputFile" class="col-lg-3 control-label registro-inputs">Avatar</label>
 				<div class="col-lg-9">
-					<input type="text"  readonly="" class="form-control floating-label" placeholder="Buscar...">
 					<input type="file" id="inputFile" multiple="">
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-lg-3 control-label registro-inputs" required>Email *</label>
+			<div class="form-group" >
+				<label class="col-lg-3 control-label registro-inputs"  >Email *</label>
 				<div class="col-lg-9">
-					<input class="form-control" id="inputUsername" ng-model="user.email" placeholder="Correo electrónico">
+					<input class="form-control" id="inputEmail" ng-model="user.email" placeholder="Correo electrónico"  type="email" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-3 control-label registro-inputs" required>Usuario *</label>
+				<label class="col-lg-3 control-label registro-inputs">Usuario *</label>
 				<div class="col-lg-9">
-					<input class="form-control" id="inputUsername" ng-model="user.username" placeholder="Nombre de Usuario">
+					<input class="form-control" id="inputUsername" ng-model="user.username" placeholder="Nombre de Usuario" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" required>Contraseña *</label>
+				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" >Contraseña *</label>
 				<div class="col-lg-9">
-					<input type="password" class="form-control" id="inputPassword" ng-model="user.password" placeholder="Contraseña">
+					<input type="password" class="form-control" id="inputPassword" ng-model="user.password" placeholder="Contraseña" required data-bv-identical-message="Las contraseñas no coinciden">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" required>Confirmar *</label>
+				<label for="inputPassword" class="col-lg-3 control-label registro-inputs" >Confirmar *</label>
 				<div class="col-lg-9">
-					<input type="password" class="form-control" id="inputCheckPassword" ng-model="user.checkpassword" placeholder="Introduzca de nuevo su contraseña">
+					<input type="password" class="form-control" id="inputCheckPassword" ng-model="user.checkpassword" placeholder="Introduzca de nuevo su contraseña" required data-bv-identical-message="Las contraseñas no coinciden">
 				</div>
 			</div>
 			<div class="buttons-register"> 
-				<button type="button" class="btn btn-default">Cancelar</button>
-				<button type="button" class="btn btn-primary" ng-click="createNewUser()">Confirmar</button>
+				<button type="button" class="btn btn-default" onClick="window.history.back()">Cancelar</button>
+				<button type="submit" value="Submit" class="btn btn-primary" >Confirmar</button>
 			</div>
 		</fieldset>
 	</form>
