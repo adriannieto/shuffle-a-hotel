@@ -31,8 +31,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/juan/shuffle-a-hotel.git"
+    "url": "git@github.com:adriannieto/shuffle-a-hotel.git"
   },
-  "author": "juan",
-  "license": ""
+  "author": "adriannieto",
+  "license": "Apache"
 }
