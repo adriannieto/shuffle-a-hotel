@@ -9,11 +9,11 @@ module.exports = {
 	getUser: function(req, res){
 		User.findOne({id : req.params.id}).populateAll().exec(function(err, user){
             if (err){
-				res.json({error: 'Unexpected error'}, 500);
+				return res.json({error: 'Unexpected error'}, 500);
             }
 			
 			if (!hotel){
-				res.json({error: 'Invalid user ID'});
+				return	res.json({error: 'Invalid user ID'});
 			}
 			
 			return res.send(user);			 
@@ -22,12 +22,12 @@ module.exports = {
 	
 	addUser: function(req, res){
 		if(!req.body){
-			res.json({error: 'Invalid User'});
+			return res.json({error: 'Invalid User'});
 		}
 				
 		User.create(req.body).exec(function(err, user){
             if (err){
-				res.json({error: 'Cannot create the User'}, 500);
+				return res.json({error: 'Cannot create the User'}, 500);
             }
 			
 			return res.send(user);			 
@@ -43,11 +43,11 @@ module.exports = {
 	removeUser: function(req, res){
 		User.destroy({id : req.params.id}).populateAll().exec(function(err, user){
             if (err){
-				res.json({error: 'Unexpected error'}, 500);
+				return res.json({error: 'Unexpected error'}, 500);
             }
 			
 			if (!hotel){
-				res.json({error: 'Invalid user ID'});
+				return res.json({error: 'Invalid user ID'});
 			}
 			
 			return res.send(user);			 
@@ -62,12 +62,12 @@ module.exports = {
 
 		User.findOneByUsername(req.parm('username')).done(function(err, user) {
 			if (err)
-				res.json({error: 'Unexpected error'}, 500);
+				return res.json({error: 'Unexpected error'}, 500);
 
 			if (user) {
 				bcrypt.compare(req.parm('password'), user.password, function(err, match) {
 					if (err)
-						res.json({error: 'Unexpected error'}, 500);
+						return res.json({error: 'Unexpected error'}, 500);
 
 					if (match) {
 						// password match
@@ -77,22 +77,22 @@ module.exports = {
 						//user.hash = hash;
 						req.session.user = user.id
 						delete user.password;
-						res.json(user);
+						return res.json(user);
 					} else {
 						// invalid password
 						req.session.user = null;
-						res.json({error: 'Invalid username/password'}, 400);
+						return res.json({error: 'Invalid username/password'}, 400);
 					}
 				});
 			} else {
-				res.json({error: 'Invalid username/password'}, 400);
+				return res.json({error: 'Invalid username/password'}, 400);
 			}
 		});
 	},
 
 	logout: function(req, res) {
 		req.session.user = null;
-		res.json({ sucess : 'User successfuly logged out'}, 500);
+		return res.json({ sucess : 'User successfuly logged out'}, 500);
 	}
 	
 };

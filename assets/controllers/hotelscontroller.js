@@ -4,7 +4,7 @@ function hotelscontroller($scope,$http){
 	$scope.limit=5;
 
 	$http({
-	    url: "api/hotels/"+$scope.page+"/"+$scope.limit,
+	    url: "api/hotels?page="+$scope.page+"&limit="+$scope.limit,
 	    method: "GET"
 	}).success(function(data, status, headers, config) {
 	    $scope.hotels = data;
@@ -16,7 +16,7 @@ function hotelscontroller($scope,$http){
 	this.previousBaraja = function(){
 		$scope.page=$scope.page-1;
 		$http({
-		    url: "api/hotels/"+$scope.page+"/"+$scope.limit,
+		    url: "api/hotels?page="+$scope.page+"&limit="+$scope.limit,
 		    method: "GET"
 		}).success(function(data, status, headers, config) {
 		    $scope.hotels = data;
@@ -33,7 +33,7 @@ function hotelscontroller($scope,$http){
 	this.nextBaraja = function(){
 		$scope.page=$scope.page+1;
 		$http({
-		    url: "api/hotels/"+$scope.page+"/"+$scope.limit,
+		    url: "api/hotels?page="+$scope.page+"&limit="+$scope.limit,
 		    method: "GET"
 		}).success(function(data, status, headers, config) {
 		    $scope.hotels = data;
