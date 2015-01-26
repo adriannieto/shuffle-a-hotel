@@ -6,7 +6,9 @@ deploy:
   user: adrian@lcc.uma.es
   password:
     secure: ea68oVlt9B30nt6NT+47QfWP7pWP68pgk7ZcjQGb55v6bdIytjb0MjBhU80y2gBVtxyp3yisn0f1ALJlh7y7ac0CQyfjTELL2CLaLbd6UQZvCSigU0NBiArXMQEOWS8XbLPrvYLnN8ra5DwQZtmWLmGH9xnVRmqf9cgJ8ymIdGk=
-  app: shuffle-a-hotel
+  app: shuffleahotel
   domain: scenic
   on:
     repo: adriannieto/shuffle-a-hotel
+env:
+- 'NODE_ENV'="production"
