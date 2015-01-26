@@ -3,9 +3,9 @@ node_js:
 - '0.11'
 deploy:
   provider: openshift
-  user: adriannieto
+  user: adrian@lcc.uma.es
   password:
-    secure: FntpjIl5yQ/VcIrLyBVnC7B4JKCgVCEOzMeJjLPvccL0AP1xREOqZjFOW+u41ztKtf/c83Lx9zOM6yp0pKydJsGZZG+plmu/8PpljLnzd20lEYtUfGhLSCmveNt2KyDSLiOpkyxx7mrBd1/YjrrbH+s+7J8MagsKLovZKoOVDG0=
+    secure: ea68oVlt9B30nt6NT+47QfWP7pWP68pgk7ZcjQGb55v6bdIytjb0MjBhU80y2gBVtxyp3yisn0f1ALJlh7y7ac0CQyfjTELL2CLaLbd6UQZvCSigU0NBiArXMQEOWS8XbLPrvYLnN8ra5DwQZtmWLmGH9xnVRmqf9cgJ8ymIdGk=
   app: shuffle-a-hotel
   domain: scenic
   on:
