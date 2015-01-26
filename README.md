@@ -1,4 +1,4 @@
-# Shuffle-a-Hotel
+# Shuffle-a-Hotel [![Build Status](https://travis-ci.org/adriannieto/shuffle-a-hotel.svg)](https://travis-ci.org/adriannieto/shuffle-a-hotel)
 
 A new way to find hotel deals. 
  
@@ -15,8 +15,8 @@ Among with JQuery, Bootstrap...
 ### Project structure
 The project structure is designed thinking about the isolation of the components. Therfore decided to split the whole application in two different submodules:
 
-- **Frontend:** The project frontend is a pure HTML5 + JS application. It uses Angular.js in order to ease the data binding and speed-up the application development process. Please read its [README.md](frontend/README.md) to see more information
-- **Backend:** A MongoDB database with a Sails.js in order to provide a REST API to access to the appication data. Please read its [README.md](backend/README.md) to see more information
+- **Frontend:** The project frontend is a pure HTML5 + JS application. It uses Angular.js in order to ease the data binding and speed-up the application development process.
+- **Backend:** A MongoDB database with a Sails.js in order to provide a REST API to access to the appication data.
 
 ### How to contribute
 

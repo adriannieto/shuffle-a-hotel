@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '0.11'
+deploy:
+  provider: openshift
+  user: adriannieto
+  password:
+    secure: FntpjIl5yQ/VcIrLyBVnC7B4JKCgVCEOzMeJjLPvccL0AP1xREOqZjFOW+u41ztKtf/c83Lx9zOM6yp0pKydJsGZZG+plmu/8PpljLnzd20lEYtUfGhLSCmveNt2KyDSLiOpkyxx7mrBd1/YjrrbH+s+7J8MagsKLovZKoOVDG0=
+  app: shuffle-a-hotel
+  domain: scenic
+  on:
+    repo: adriannieto/shuffle-a-hotel
+env:
+- 'NODE_ENV'="production"
