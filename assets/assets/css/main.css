@@ -8,8 +8,8 @@
 	border-color: #78FA89;
 }
 
-.box-register{
-
+.box-jumbotron{
+	margin-top: 20px;
 	margin-left: 200px;
 	margin-right: 200px;
 }
@@ -29,6 +29,15 @@
 .radioRegistro{
 
 	padding-left: 220px;
+}
+
+.btn-delete{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#formAddHotel{
+	display: none;
 }
 
 #tooglenav{

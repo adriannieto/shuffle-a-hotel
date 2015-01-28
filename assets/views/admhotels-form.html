@@ -1,0 +1,101 @@
+<script>
+function ocultar(){
+	if(document.getElementById("formAdmHotel").style.display != "none"){
+		document.getElementById("formAdmHotel").style.display = "none";
+		document.getElementById("formAddHotel").style.display  = "block";
+	}else{
+		document.getElementById("formAdmHotel").style.display = "block";
+		document.getElementById("formAddHotel").style.display  = "none";
+	}
+};
+</script>
+
+<div id="formAdmHotel" class=" box-jumbotron jumbotron">
+	<h1>Administración de hoteles</h1>          
+	<form name="admhotelsForm" id="admhotelsForm" class="form-horizontal css-form">
+		<h3> Lista de hoteles </h3>
+		<fieldset> 
+			<table class="table table-striped table-hover ">
+			    <thead>
+			        <tr>
+			            <th>#</th>
+			            <th>Nombre del hotel</th>
+			            <th>Acción</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr ng-repeat="hotel in hotels">
+			            <td>{{hotel.id}}</td>
+			            <td>{{hotel.name}}</td>
+			            <td><a href="javascript:void(0)" class="btn btn-delete btn-danger">Eliminar</a>
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+			<a href="javascript:void(0)" class="btn btn-primary" onclick="ocultar()">Añadir hotel</a>
+		</fieldset>
+	</form>
+</div>
+
+<div id="formAddHotel" class=" box-jumbotron jumbotron">
+	<h1>Añadir hotel</h1>          
+	<form name="admhotelsForm" id="admhotelsForm" class="form-horizontal css-form">
+		<fieldset> 
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="inputName" ng-model="hotel.name" placeholder="Nombre del hotel" required>
+				</div>
+			</div>
+			<div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Descripción *</label>
+	            <div class="col-lg-9">
+	                <textarea class="form-control" rows="3" id="textAreaDescription" ng-model="hotel.description" required></textarea>
+	                <span class="help-block"></span>Escriba una descripción acerca del hotel.
+	            </div>
+        	</div>
+        	<div class="form-group">
+	            <label for="select" class="col-lg-3 control-label registro-inputs">Estrellas *</label>
+	            <div class="col-lg-9">
+	                <select class="form-control" id="selectRating" ng-model="hotel.rating" required>
+	                    <option>1</option>
+	                    <option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                    <option>5</option>
+	                </select>
+	            </div>
+        	</div>
+        	<div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Precio *</label>
+	            <div class="col-lg-9">
+	                <input type="number" class="form-control" id="inputPrice" placeholder="Precio en €" ng-model="hotel.price" required>
+	            </div>
+	        </div>		
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Página Web *</label>
+	            <div class="col-lg-9">
+	                <input type="url" class="form-control" id="inputURL" placeholder="URL Ej: 'http://www.mithotel.es'" ng-model="hotel.url" required>
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Localización *</label>
+	            <div class="col-lg-3">
+	                <input type="number" class="form-control" id="inputLat" placeholder="Latitud" ng-model="hotel.location.latitude" required>
+	            </div>
+	            <div class="col-lg-3">
+	                <input type="number" class="form-control" id="inputLot" placeholder="Longitud" ng-model="hotel.location.lontigude" required>
+	            </div>
+	            <div class="col-lg-3">
+	            	<a href="http://www.bufa.es/google-maps-latitud-longitud/" target="_blank" class="btn-link">Obtener coordenadas</a>
+	            </div>
+	        </div>		
+			<a href="javascript:void(0)" class="btn btn-primary">Añadir</a>
+			<a class="btn btn-cancel" onclick="ocultar()">Cancelar</a>
+		</fieldset>
+	</form>
+</div>
+
+
+
+
