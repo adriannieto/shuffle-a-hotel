@@ -12,7 +12,7 @@ function ocultar(){
 
 <div id="formAdmHotel" class=" box-jumbotron jumbotron">
 	<h1>Administración de hoteles</h1>          
-	<form name="admhotelsForm" id="admhotelsForm" class="form-horizontal css-form">
+	<form name="admhotelsForm" id="admhotelsForm" class="form-horizontal css-form" ng-submit="admhotelForm.$valid" novalidate>
 		<h3> Lista de hoteles </h3>
 		<fieldset> 
 			<table class="table table-striped table-hover ">
@@ -27,19 +27,20 @@ function ocultar(){
 			        <tr ng-repeat="hotel in hotels">
 			            <td>{{hotel.id}}</td>
 			            <td>{{hotel.name}}</td>
-			            <td><a href="javascript:void(0)" class="btn btn-delete btn-danger">Eliminar</a>
+			            <td><button type="submit" value="Submit" class="btn btn-delete btn-danger" ng-click="deleteHotel(hotel.name)" >Eliminar</button></a>
 			            </td>
 			        </tr>
 			    </tbody>
 			</table>
-			<a href="javascript:void(0)" class="btn btn-primary" onclick="ocultar()">Añadir hotel</a>
+			
 		</fieldset>
 	</form>
+	<a class="btn btn-primary" onclick="ocultar()">Añadir hotel</a>
 </div>
 
 <div id="formAddHotel" class=" box-jumbotron jumbotron">
 	<h1>Añadir hotel</h1>          
-	<form name="admhotelsForm" id="admhotelsForm" class="form-horizontal css-form">
+	<form name="addhotelsForm" id="addhotelsForm" class="form-horizontal css-form" ng-submit="addhotelsForm.$valid && createHotel()" novalidate>
 		<fieldset> 
 			<div class="form-group">
 				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
@@ -87,11 +88,13 @@ function ocultar(){
 	                <input type="number" class="form-control" id="inputLot" placeholder="Longitud" ng-model="hotel.location.lontigude" required>
 	            </div>
 	            <div class="col-lg-3">
-	            	<a href="http://www.bufa.es/google-maps-latitud-longitud/" target="_blank" class="btn-link">Obtener coordenadas</a>
+	            	<a href="http://www.bufa.es/google-maps-latitud-longitud/" target="blank" class="btn-link">Obtener coordenadas</a>
 	            </div>
-	        </div>		
-			<a href="javascript:void(0)" class="btn btn-primary">Añadir</a>
-			<a class="btn btn-cancel" onclick="ocultar()">Cancelar</a>
+	        </div>
+	        <div class="buttons-register"> 
+				<button type="button" class="btn btn-default" onClick="ocultar()">Cancelar</button>
+				<button type="submit" value="Submit" class="btn btn-primary" >Confirmar</button>
+			</div>		
 		</fieldset>
 	</form>
 </div>
