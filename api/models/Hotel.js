@@ -38,8 +38,8 @@ module.exports = {
 	  },
 	  url:{
 		type: 'string',
-		required: 'true',
-		url: 'true'
+		required: true,
+		url: true
 	  },
 	  // location example: location = {latitude : 30, longitude : 10}
 	  location: {

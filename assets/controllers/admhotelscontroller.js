@@ -22,7 +22,7 @@ var offers = [
 
 function admhotelscontroller($scope,$http,$location){
 	$scope.hotels= offers;
-	$scope.userID = 1;
+	$scope.user= 1;
 	$scope.hotelID = 1;
 
 	/*$http({
@@ -68,7 +68,7 @@ function admhotelscontroller($scope,$http,$location){
 								 'url':$scope.hotel.url,
 								 'location':{'latitude':$scope.hotel.latitude,
 											 'longitude':$scope.hotel.longitude}	
-					}
+						};
 		$http.post('api/hotels',hoteltemp)
 		.success(function(data, status, headers, config) {
 			$scope.hotels.push(hoteltemp);
