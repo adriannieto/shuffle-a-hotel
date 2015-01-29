@@ -1,0 +1,18 @@
+<form name="loginForm" id="loginForm" class="form-horizontal css-form"  ng-submit="loginForm.$valid && login()" novalidate>
+	<div class="col-md-offset-4 col-md-4">
+		<div class="form-login">
+			<h4>Bienvenid@ de nuevo</h4>
+			<div style="margin-bottom: 40px;">
+				<input class="form-control" id="username" ng-model="user.username" placeholder="Nombre de Usuario" required>
+			</div>
+			<div style="margin-bottom: 40px;">
+				<input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Contraseña" required>
+			</div>
+			<div class="buttonwrapper">
+				<span class="group-btn">     
+					<button type="submit" value="Submit" class="btn btn-primary btn-md">Iniciar sesión<i class="fa fa-sign-in"></i></button>
+				</span>
+			</div>
+		</div>
+	</div>
+</form>

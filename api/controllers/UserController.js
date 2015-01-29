@@ -12,7 +12,7 @@ module.exports = {
 				return res.json({error: 'Unexpected error'}, 500);
             }
 			
-			if (!hotel){
+			if (!user){
 				return	res.json({error: 'Invalid user ID'});
 			}
 			
@@ -44,7 +44,7 @@ module.exports = {
 		User.destroy({id : req.params.id}).populateAll().exec(function(err, user){
             if (err){
 				return res.json({error: 'Unexpected error'}, 500);
-            }
+            } 
 			
 			if (!hotel){
 				return res.json({error: 'Invalid user ID'});
@@ -57,15 +57,15 @@ module.exports = {
 	
 	
 	login: function(req, res) {
-		var bcrypt = require('bcrypt');
+		var bcrypt = require('bcrypt-nodejs');
 		//var crypto = require('crypto');
 
-		User.findOneByUsername(req.parm('username')).done(function(err, user) {
+		User.findOneByUsername(req.body.username).exec(function(err, user) {
 			if (err)
 				return res.json({error: 'Unexpected error'}, 500);
 
 			if (user) {
-				bcrypt.compare(req.parm('password'), user.password, function(err, match) {
+				bcrypt.compare(req.body.password, user.password, function(err, match) {
 					if (err)
 						return res.json({error: 'Unexpected error'}, 500);
 
@@ -75,7 +75,7 @@ module.exports = {
 						//var hash = crypto.createHash('md5')
 						//	.update(user.id + Date.now()).digest('hex');
 						//user.hash = hash;
-						req.session.user = user.id
+						req.session.user = user.id;
 						delete user.password;
 						return res.json(user);
 					} else {
@@ -92,7 +92,7 @@ module.exports = {
 
 	logout: function(req, res) {
 		req.session.user = null;
-		return res.json({ sucess : 'User successfuly logged out'}, 500);
+		return res.json({ sucess : 'User successfuly logged out'}, 200);
 	}
 	
 };

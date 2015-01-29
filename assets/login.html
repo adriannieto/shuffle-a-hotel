@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="shuffleahotel" ng-controller="globalcontroller as globalCtrl">
+    <head>
+        <meta charset="utf-8">
+        <title>SHUFFLE A HOTEL</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/ripples.min.css" rel="stylesheet">
+        <link href="assets/css/material-wfont.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="assets/css/cartas.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+        <link href="assets/css/main.css" rel="stylesheet">
+        <script type="text/javascript" src="assets/js/modernizr.custom.79639.js"></script>
+    </head>
+
+    <body class="backImg">
+
+        <!--Nav Tab -->
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <!--Logo-Pagina-Inicio-->
+                <ul class="nav navbar-nav">
+                    <li class="header-logo-default" >                
+                        <a class="mdi-action-home" href="index.html">Shuffle a Hotel</a>
+                    </li>
+                </ul>
+                <!--Adm.Hoteles-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <li>
+                        <button class="btn btn-default btn-raised btn-white btn-sm" formaction="registrarse.html" ng-show="1"><a href="register.html">Registrarse</a></button>
+                    </li>
+                    </li>
+                    <li>
+                        <div id="avatar" class="list-group" ng-show="0">
+                            <div class="list-group-item"> 
+                                <div class="row-picture" id="imgavatar" >
+                                    <img class="circle" src="http://lorempixel.com/56/56/" alt="icon">
+                                </div>
+                                <div class="row-content">
+                                    <li class="dropdown" >
+                                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" ng-show="0">Username<b class="caret"></b></a>
+                                        <ul class="dropdown-menu" ng-show="0">
+                                            <li><a href="javascript:void(0)">Ver Mis Hoteles</a></li>
+                                            <li><a href="javascript:void(0)">Añadir Hotel</a></li>
+                                            <li><a href="javascript:void(0)">Modificar Hotel</a></li>
+                                            <li><a href="javascript:void(0)">Eliminar Hotel</a></li>
+                                            <li><a href="javascript:void(0)">Cerrar Sesión</a></li>
+                                        </ul>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>    
+            </div>
+        </div>
+
+        <!-- Your site -->
+        <div class="wrapper">
+            <login></login>
+        </div>
+        <!-- Your site ends -->
+
+        <!-- external libraries scripts -->
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="assets/js/ripples.min.js"></script>
+        <script src="assets/js/material.min.js"></script>
+        <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+        <script type="text/javascript" src="assets/js/angular.min.js"></script>
+        <script type="text/javascript" src="assets/js/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.baraja.js"></script>
+
+        <!-- Angular.JS scripts -->
+        <script type="text/javascript" src="assets/js/app.js"></script>
+        <script type="text/javascript" src="directives/hotelsdirective.js"></script>
+        <script type="text/javascript" src="controllers/hotelscontroller.js"></script>
+        <script type="text/javascript" src="directives/logindirective.js"></script>
+        <script type="text/javascript" src="controllers/logincontroller.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $.material.init();
+                $(".shor").noUiSlider({
+                    start: 60,
+                    step: 10,
+                    connect: "lower",
+                    range: {
+                        min: 0,
+                        max: 200
+                    },
+                    // Configure tapping, or make the selected range dragable.
+                    behaviour: 'tap-drag'
+                });
+                $('.shor').Link('lower').to($('#shor-value'));
+
+                $('#registrationForm').bootstrapValidator().on('success.form.bv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                });
+            });
+        </script>
+
+        <script type="text/javascript" src="assets/js/bootstrapValidator.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrapValidator.es_ES.js"></script>
+
+        <!-- custom functions scripts -->
+        <script type="text/javascript" src="assets/js/main.js"></script>
+    </body>
+</html>

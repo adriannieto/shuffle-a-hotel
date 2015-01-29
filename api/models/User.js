@@ -66,8 +66,8 @@ module.exports = {
 
 		// Encrypt password
 		// bcrypt.compare(req.param('password'), user.password, function(err, match)...
-		var bcrypt = require('bcrypt');
-		bcrypt.hash(values.password, 10, function(err, hash) {
+		var bcrypt = require('bcrypt-nodejs');
+		bcrypt.hash(values.password, null, null, function(err, hash) {
 			if(err) return cb(err);
 			values.password = hash;
 
