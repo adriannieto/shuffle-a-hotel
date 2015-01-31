@@ -1,6 +1,7 @@
 module.exports.routes = {
 
   // Hotel related routes
+  'GET /api/hotels/business/:owner': 'HotelController.getHotelsByBusiness',
   'GET /api/hotels:page?:limit?': 'HotelController.listHotels',
   'GET /api/hotels/:id': 'HotelController.getHotel',
   'PUT /api/hotels': 'HotelController.updateHotel',
@@ -19,6 +20,7 @@ module.exports.routes = {
   'PUT /api/business': 'BusinessController.updateBusiness',
   'POST /api/business': 'BusinessController.addBusiness',
   'DELETE /api/business/:id': 'BusinessController.removeBusiness',
+  'GET /api/business/:user?': 'BusinessController.getBusinessByUser',
   
   
   // Authentication routes

@@ -20,10 +20,27 @@ var offers = [
 	}
 ]
 
-function admhotelscontroller($scope,$http,$location){
-	$scope.hotels= offers;
+function admhotelscontroller($scope,$http,$location,$cookieStore){
+	$scope.user = $cookieStore.get('user');
+	$http.get('/api/business/?user='+$scope.user.id)
+	.success(function(data, status, headers, config) {
+		if(data!="null"){
+			$scope.userBusiness = data;
+			$http.get('/api/hotels/business/'+$scope.userBusiness.id)
+			.success(function(data, status, headers, config) {
+				$scope.hotels = data;
+			}).error(function(data, status, headers, config) {
+				console.log(data);
+			});
+		}else{
+			document.location.href='/business.html';
+		}
+	}).error(function(data, status, headers, config) {
+		console.log(data);
+	});
+	/*$scope.hotels= offers;
 	$scope.user= 1;
-	$scope.hotelID = 1;
+	$scope.hotelID = 1;*/
 
 	/*$http({
 	    url: "/api/business/"+$scope.userID,
@@ -35,10 +52,10 @@ function admhotelscontroller($scope,$http,$location){
 	    alert(data.error);
 	});*/
 
-	$scope.deleteHotel = function(name){
+	$scope.deleteHotel = function(id,name){
 
 		$http({
-			url: "/api/hotels/"+$scope.hotelID,
+			url: "/api/hotels/"+id,
 			method: "DELETE"
 		}).success(function(data, status, headers, config) {
 			var index = -1;		
@@ -67,7 +84,8 @@ function admhotelscontroller($scope,$http,$location){
 								 'price':$scope.hotel.price,
 								 'url':$scope.hotel.url,
 								 'location':{'latitude':$scope.hotel.latitude,
-											 'longitude':$scope.hotel.longitude}	
+											 'longitude':$scope.hotel.longitude},
+								 'owner':$scope.userBusiness.id
 						};
 		$http.post('api/hotels',hoteltemp)
 		.success(function(data, status, headers, config) {

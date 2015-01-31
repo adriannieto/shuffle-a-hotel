@@ -19,8 +19,22 @@ module.exports = {
 			return res.send(business);			 
 		});
 	},
+
+	getBusinessByUser: function(req, res){
+		Business.findOne({user : req.query.user}).populateAll().exec(function(err, business){
+            if (err){
+				return res.json({error: 'Unexpected error'}, 500);
+            }
+			
+			if (!business){
+				return res.json(null);
+			}
+			
+			return res.send(business);			 
+		});
+	},
 	
-	addBusiness: function(req, res){	  
+	addBusiness: function(req, res){
 		if(!req.body){
 			return res.json({error: 'Invalid Business ID'});
 		}
@@ -29,7 +43,7 @@ module.exports = {
             if (err){
 				return res.json({error: 'Cannot create the Business'}, 500);
             }
-			
+            User.update({id:req.body.user.id},{business:business.id})
 			return res.send(business);			 
 		})
 
@@ -47,11 +61,20 @@ module.exports = {
 				return res.json({error: 'Unexpected error'}, 500);
             }
 			
-			if (!hotel){
-				return res.json({error: 'Invalid hotel ID'});
+			if (!business){
+				return res.json({error: 'Invalid business ID'});
 			}
-			
-			return res.send(business);			 
+
+			Hotel.destroy({owner : req.params.id}).exec(function(err,hotels){
+				if (err){
+					return res.json({error: 'Unexpected error'}, 500);
+	            }
+				
+				if (!hotels){
+					return res.json({error: 'Invalid business ID'});
+				}
+				return res.send(business);	
+			});		 
 		});
 	}
 	

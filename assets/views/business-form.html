@@ -1,0 +1,30 @@
+<div ng-show="!userBusiness" class="jumbotron box-jumbotron">
+	<h1>Crear cadena hotelera</h1>          
+	<form name="businessForm" id="businessForm" class="form-horizontal css-form"  ng-submit="businessForm.$valid && createNewBusiness()" novalidate>
+		<fieldset> 
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="inputName" ng-model="business.name" placeholder="Nombre" required>
+				</div>
+			</div>
+			<div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Página Web *</label>
+	            <div class="col-lg-9">
+	                <input type="url" class="form-control" id="inputURL" placeholder="URL Ej: 'http://www.mithotel.es'" ng-model="business.url" required>
+	            </div>
+	        </div>
+			<div class="buttons-register">
+				<button type="submit" value="Submit" class="btn btn-primary" >Crear</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<div ng-show="userBusiness" class="jumbotron box-jumbotron">
+	<div style="text-align: center">
+		<h1>{{userBusiness.name}}</h1>
+		<h2><a href="{{userBusiness.url}}">{{userBusiness.url}}</a></h2>
+		<a href="admhotels.html" class="btn btn-primary btn-raised">Administrar hoteles</a>
+		<a href="javascript:void(0)" ng-click="deleteBusiness()" class="btn btn-danger btn-raised">Eliminar cadena</a>
+	</div>
+</div>

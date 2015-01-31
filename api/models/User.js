@@ -51,7 +51,7 @@ module.exports = {
 			required: true
 		},
 		business: {
-			model: 'User'
+			model: 'user'
 		},
 		
 	    // Override toJSON method to remove password from API

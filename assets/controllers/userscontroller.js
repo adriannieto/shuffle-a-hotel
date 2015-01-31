@@ -11,8 +11,6 @@ function userscontroller($scope,$http,$location){
 		}else{
 			alert("La contraseña no coincide");
 		}
-
-			
 	}
 }
 

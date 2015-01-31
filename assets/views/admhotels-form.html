@@ -27,7 +27,7 @@ function ocultar(){
 			        <tr ng-repeat="hotel in hotels">
 			            <td>{{hotel.id}}</td>
 			            <td>{{hotel.name}}</td>
-			            <td><button type="submit" value="Submit" class="btn btn-delete btn-danger" ng-click="deleteHotel(hotel.name)" >Eliminar</button></a>
+			            <td><button type="submit" value="Submit" class="btn btn-delete btn-danger" ng-click="deleteHotel(hotel.id,hotel.name)" >Eliminar</button></a>
 			            </td>
 			        </tr>
 			    </tbody>
