@@ -40,6 +40,10 @@
 	display: none;
 }
 
+#formUpdateHotel{
+	display: none;
+}
+
 #tooglenav{
 	padding-top: 18px;
 }

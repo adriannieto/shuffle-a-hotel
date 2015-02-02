@@ -4,7 +4,7 @@ module.exports.routes = {
   'GET /api/hotels/business/:owner': 'HotelController.getHotelsByBusiness',
   'GET /api/hotels:page?:limit?': 'HotelController.listHotels',
   'GET /api/hotels/:id': 'HotelController.getHotel',
-  'PUT /api/hotels': 'HotelController.updateHotel',
+  'PUT /api/hotels/:id': 'HotelController.updateHotel',
   'POST /api/hotels': 'HotelController.addHotel',
   'DELETE /api/hotels/:id': 'HotelController.removeHotel',
 

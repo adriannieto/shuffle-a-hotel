@@ -1,6 +1,7 @@
 // Datos de prueba
 var offers = [
 	{
+		id: 1,
 		name: 'Ripetta Rooms 1',
 		path: 'assets/img/hotel.jpg',
 		stars: 5,
@@ -10,6 +11,7 @@ var offers = [
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie et dui vitae porta. Etiam viverra suscipit libero vitae porta. Quisque consequat sapien eu eros porttitor interdum quis sit amet nisl. Cras posuere nisl sed ex consectetur, et porttitor nunc lacinia. Nulla accumsan auctor aliquet. Nunc pharetra pulvinar augue, quis euismod massa tempor feugiat. Quisque libero lacus, iaculis quis ullamcorper sed, dignissim quis lacus. Praesent rhoncus sodales lacinia. Phasellus et mi eget purus lacinia bibendum eget sit amet lorem.'
 	},
 	{
+		id: 2,
 		name: 'Ripetta Rooms 2',
 		path: 'assets/img/hotel.jpg',
 		stars: 5,
@@ -38,19 +40,7 @@ function admhotelscontroller($scope,$http,$location,$cookieStore){
 	}).error(function(data, status, headers, config) {
 		console.log(data);
 	});
-	/*$scope.hotels= offers;
-	$scope.user= 1;
-	$scope.hotelID = 1;*/
-
-	/*$http({
-	    url: "/api/business/"+$scope.userID,
-	    method: "GET"
-	}).success(function(data, status, headers, config) {
-	    $scope.hotels = data.hotels;
-	    console.log("hotel data received: " + data);
-	}).error(function(data, status, headers, config) {
-	    alert(data.error);
-	});*/
+	//$scope.hotels= offers;
 
 	$scope.deleteHotel = function(id,name){
 
@@ -78,22 +68,55 @@ function admhotelscontroller($scope,$http,$location,$cookieStore){
 
 	$scope.createHotel = function(){
 		
-		var hoteltemp = { 'name':$scope.hotel.name,
-								 'description': $scope.hotel.description,
-								 'rating':$scope.hotel.rating,
-								 'price':$scope.hotel.price,
-								 'url':$scope.hotel.url,
-								 'location':{'latitude':$scope.hotel.latitude,
-											 'longitude':$scope.hotel.longitude},
+		var hoteltemp = { 'name':$scope.newhotel.name,
+								 'description': $scope.newhotel.description,
+								 'rating':$scope.newhotel.rating,
+								 'price':$scope.newhotel.price,
+								 'url':$scope.newhotel.url,
+								 'location':{'latitude':$scope.newhotel.latitude,
+											 'longitude':$scope.newhotel.longitude},
 								 'owner':$scope.userBusiness.id
 						};
 		$http.post('api/hotels',hoteltemp)
 		.success(function(data, status, headers, config) {
 			$scope.hotels.push(hoteltemp);
 			// Limpia los datos del formulario
-			$scope.hotel = "";
+			delete $scope.newhotel;
 			// Oculta el formulario para añadir hotel
-			ocultar();
+			mostrar('formAdmHotel');
+		}).error(function(data, status, headers, config) {
+			alert(data.error);
+		});
+	};
+
+	// Carga los datos del hotel seleccionado en el formulario de 'Modificar Hotel'
+	$scope.updateFields = function(hotel){
+		$scope.hotel = hotel;
+		mostrar('formUpdateHotel');
+	}
+
+	$scope.updateHotel = function(){
+		var hoteltemp = { 		 'id':$scope.hotel.id,
+								 'name':$scope.hotel.name,
+								 'description': $scope.hotel.description,
+								 'rating':$scope.hotel.rating,
+								 'price':$scope.hotel.price,
+								 'url':$scope.hotel.url,
+								 'location':{'latitude':$scope.hotel.location.latitude,
+											 'longitude':$scope.hotel.location.longitude},
+								 'owner':$scope.userBusiness.id
+						};
+		$http.put('api/hotels'+$scope.hotel.id ,hoteltemp)
+		.success(function(data, status, headers, config) {
+			$http.get('/api/hotels/business/'+$scope.userBusiness.id)
+			.success(function(data, status, headers, config) {
+				$scope.hotels = data;
+				// Oculta el formulario para añadir hotel
+				mostrar('formAdmHotel');
+			}).error(function(data, status, headers, config) {
+				console.log(data);
+				alert(data.error);
+			});
 		}).error(function(data, status, headers, config) {
 			alert(data.error);
 		});

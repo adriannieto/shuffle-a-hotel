@@ -1,12 +1,10 @@
 <script>
-function ocultar(){
-	if(document.getElementById("formAdmHotel").style.display != "none"){
-		document.getElementById("formAdmHotel").style.display = "none";
-		document.getElementById("formAddHotel").style.display  = "block";
-	}else{
-		document.getElementById("formAdmHotel").style.display = "block";
-		document.getElementById("formAddHotel").style.display  = "none";
-	}
+// Pone visible el formulario que se pasa como parámetro (id) y oculta los demás
+function mostrar(nameForm){
+	document.getElementById("formAdmHotel").style.display = "none";
+	document.getElementById("formAddHotel").style.display = "none";
+	document.getElementById("formUpdateHotel").style.display = "none";
+	document.getElementById(nameForm).style.display = "block";
 };
 </script>
 
@@ -27,20 +25,82 @@ function ocultar(){
 			        <tr ng-repeat="hotel in hotels">
 			            <td>{{hotel.id}}</td>
 			            <td>{{hotel.name}}</td>
-			            <td><button type="submit" value="Submit" class="btn btn-delete btn-danger" ng-click="deleteHotel(hotel.id,hotel.name)" >Eliminar</button></a>
-			            </td>
+			            <td><button type="submit" value="Submit" class="btn btn-delete btn-success" ng-click="updateFields(hotel)">Modificar</button></a></td>
+			            <td><button type="submit" value="Submit" class="btn btn-delete btn-danger" ng-click="deleteHotel(hotel.id,hotel.name)" >Eliminar</button></a></td>
 			        </tr>
 			    </tbody>
 			</table>
 			
 		</fieldset>
 	</form>
-	<a class="btn btn-primary" onclick="ocultar()">Añadir hotel</a>
+	<a class="btn btn-primary" onclick="mostrar('formAddHotel')">Añadir hotel</a>
 </div>
 
 <div id="formAddHotel" class=" box-jumbotron jumbotron">
 	<h1>Añadir hotel</h1>          
 	<form name="addhotelsForm" id="addhotelsForm" class="form-horizontal css-form" ng-submit="addhotelsForm.$valid && createHotel()" novalidate>
+		<fieldset> 
+			<div class="form-group">
+				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
+				<div class="col-lg-9">
+					<input class="form-control" id="newInputName" ng-model="newhotel.name" placeholder="Nombre del hotel" required>
+				</div>
+			</div>
+			<div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Descripción *</label>
+	            <div class="col-lg-9">
+	                <textarea class="form-control" rows="3" id="textAreaDescription" ng-model="newhotel.description" required></textarea>
+	                <span class="help-block"></span>Escriba una descripción acerca del hotel.
+	            </div>
+        	</div>
+        	<div class="form-group">
+	            <label for="select" class="col-lg-3 control-label registro-inputs">Estrellas *</label>
+	            <div class="col-lg-9">
+	                <select class="form-control" id="newSelectRating" ng-model="newhotel.rating" required>
+	                    <option>1</option>
+	                    <option>2</option>
+	                    <option>3</option>
+	                    <option>4</option>
+	                    <option>5</option>
+	                </select>
+	            </div>
+        	</div>
+        	<div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Precio *</label>
+	            <div class="col-lg-9">
+	                <input type="number" class="form-control" id="newInputPrice" placeholder="Precio en €" ng-model="newhotel.price" required>
+	            </div>
+	        </div>		
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Página Web *</label>
+	            <div class="col-lg-9">
+	                <input type="url" class="form-control" id="newInputURL" placeholder="URL Ej: 'http://www.mithotel.es'" ng-model="newhotel.url" required>
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <label class="col-lg-3 control-label registro-inputs">Localización *</label>
+	            <div class="col-lg-3">
+	                <input type="number" class="form-control" id="newInputLat" placeholder="Latitud" ng-model="newhotel.latitude" required>
+	            </div>
+	            <div class="col-lg-3">
+	                <input type="number" class="form-control" id="newInputLon" placeholder="Longitud" ng-model="newhotel.longitude" required>
+	            </div>
+	            <div class="col-lg-3">
+	            	<a href="http://www.bufa.es/google-maps-latitud-longitud/" target="blank" class="btn-link">Obtener coordenadas</a>
+	            </div>
+	        </div>
+	        <div class="buttons-register"> 
+				<button type="button" class="btn btn-default" onClick="mostrar('formAdmHotel')">Cancelar</button>
+				<button type="submit" value="Submit" class="btn btn-primary" >Confirmar</button>
+			</div>		
+		</fieldset>
+	</form>
+</div>
+
+
+<div id="formUpdateHotel" class=" box-jumbotron jumbotron">
+	<h1>Modificar hotel</h1>          
+	<form name="updatehotelsForm" id="updatehotelsForm" class="form-horizontal css-form" ng-submit="updatehotelsForm.$valid && updateHotel()" novalidate>
 		<fieldset> 
 			<div class="form-group">
 				<label class="col-lg-3 control-label registro-inputs">Nombre *</label>
@@ -82,17 +142,17 @@ function ocultar(){
 	        <div class="form-group">
 	            <label class="col-lg-3 control-label registro-inputs">Localización *</label>
 	            <div class="col-lg-3">
-	                <input type="number" class="form-control" id="inputLat" placeholder="Latitud" ng-model="hotel.latitude" required>
+	                <input type="number" class="form-control" id="inputLat" placeholder="Latitud" ng-model="hotel.location.latitude" required>
 	            </div>
 	            <div class="col-lg-3">
-	                <input type="number" class="form-control" id="inputLon" placeholder="Longitud" ng-model="hotel.longitude" required>
+	                <input type="number" class="form-control" id="inputLon" placeholder="Longitud" ng-model="hotel.location.longitude" required>
 	            </div>
 	            <div class="col-lg-3">
 	            	<a href="http://www.bufa.es/google-maps-latitud-longitud/" target="blank" class="btn-link">Obtener coordenadas</a>
 	            </div>
 	        </div>
 	        <div class="buttons-register"> 
-				<button type="button" class="btn btn-default" onClick="ocultar()">Cancelar</button>
+				<button type="button" class="btn btn-default" onClick="mostrar('formAdmHotel')">Cancelar</button>
 				<button type="submit" value="Submit" class="btn btn-primary" >Confirmar</button>
 			</div>		
 		</fieldset>

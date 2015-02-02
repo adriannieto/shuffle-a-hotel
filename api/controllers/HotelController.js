@@ -61,9 +61,17 @@ module.exports = {
 	},
 	
 	updateHotel: function(req, res){
-	    return res.json({
-	      todo: 'Not implemented yet!'
-	    });
+	    if(!req.body){
+			return res.json({error: 'Invalid hotel ID'});
+		}
+
+		Hotel.update(req.body).exec(function(err, hotel){
+			if (err){
+				return res.json({error: 'Cannot update the Hotel'}, 500);
+            }
+			
+			return res.send(hotel);	
+		})
 	},
 	
 	removeHotel: function(req, res){
