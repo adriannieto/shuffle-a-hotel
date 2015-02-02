@@ -5,11 +5,9 @@ module.exports.connections = {
 
  productionOpenShiftMongoDB: {
     adapter: 'sails-mongo',
-    host: process.env.OPENSHIFT_NODEJS_IP,   
-    port: process.env.OPENSHIFT_NODEJS_PORT,
-    user: process.env.OPENSHIFT_MONGODB_DB_HOST,
-    password: process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
-    database: process.env.OPENSHIFT_APP_NAME
+    host: '127.0.0.1',   
+    port: 27017,
+    database: 'shuffle-a-hotel'
   },
 
 };

@@ -3,7 +3,7 @@ module.exports = {
        connection: 'productionOpenShiftMongoDB',
 	   migrate: 'alter'
   },
-  port: process.env.OPENSHIFT_NODEJS_PORT || 80,
+  port: 1337,
   log: {
      level: "warn"
   }
