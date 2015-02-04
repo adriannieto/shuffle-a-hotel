@@ -12,13 +12,21 @@ module.exports = {
 		var limitParam = (!req.query.limit)? 0 : req.query.limit;
 		var pageParam = (!req.query.page)? 0 : req.query.page;
 		
-		Hotel.find().paginate({limit : limitParam, page :pageParam}).exec(function(err, hotels){
-            if (err){
-				return res.json({error: 'Unexpected error'}, 500);
-            }
-			
-			return res.send(hotels);			 
-		});
+		if(req.query.stars && req.query.stars != 0){
+			Hotel.find({'rating' : req.query.stars}).paginate({limit : limitParam, page :pageParam}).exec(function(err, hotels){
+	            if (err){
+					return res.json({error: 'Unexpected error'}, 500);
+	            }
+				return res.send(hotels);			 
+			});
+		}else{
+			Hotel.find().paginate({limit : limitParam, page :pageParam}).exec(function(err, hotels){
+	            if (err){
+					return res.json({error: 'Unexpected error'}, 500);
+	            }
+				return res.send(hotels);			 
+			});
+		}
 	},
 	
 	getHotel: function(req, res){

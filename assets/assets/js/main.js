@@ -83,3 +83,53 @@ $('#maptoggle').click(function(){
         $('#cardsview').show();
     }
 });
+
+function cleanFilter(){
+    /* Show cards if the welcoming message is still on screen */
+    if($('#beginDiv').css('opacity') != '0'){
+        $('#beginDiv').css('opacity','0');
+        $('#beginDiv').hide();
+        $("body").removeClass("backImg").addClass("tapete");
+        $('#baraja1').show();
+    }
+
+    /* Reset AngularJS variables */
+    var appElement = document.querySelector('[ng-app=shuffleahotel]');
+    var $scope = angular.element(appElement).scope();
+    $scope.hotels={};
+    $scope.page=1;
+    $scope.limit=5;
+    $scope.starsFilter = 0;
+    $scope.loadMapHotels(function(){
+        $scope.loadHotels(function(){
+            $scope.updateCards();
+        });
+    });
+}
+
+function updateFilter(){
+    /* Show cards if the welcoming message is still on screen */
+    if($('#beginDiv').css('opacity') != '0'){
+        $('#beginDiv').css('opacity','0');
+        $('#beginDiv').hide();
+        $("body").removeClass("backImg").addClass("tapete");
+        $('#baraja1').show();
+    }
+
+    /* Get new filter values */
+    var selectEstrellas = document.getElementById("estrellas");
+    var stars = selectEstrellas.options[selectEstrellas.selectedIndex].value;
+
+    /* Get AngularJS scope and update filter variables used in controllers */
+    var appElement = document.querySelector('[ng-app=shuffleahotel]');
+    var $scope = angular.element(appElement).scope();
+    $scope.hotels={};
+    $scope.page=1;
+    $scope.limit=5;
+    $scope.starsFilter = stars;
+    $scope.loadMapHotels(function(){
+        $scope.loadHotels(function(){
+            $scope.updateCards();
+        });
+    });
+}

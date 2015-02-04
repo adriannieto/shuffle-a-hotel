@@ -2,7 +2,7 @@ module.exports.routes = {
 
   // Hotel related routes
   'GET /api/hotels/business/:owner': 'HotelController.getHotelsByBusiness',
-  'GET /api/hotels:page?:limit?': 'HotelController.listHotels',
+  'GET /api/hotels:page?:limit?:stars?': 'HotelController.listHotels',
   'GET /api/hotels/:id': 'HotelController.getHotel',
   'PUT /api/hotels/:id': 'HotelController.updateHotel',
   'POST /api/hotels': 'HotelController.addHotel',
